@@ -1,0 +1,59 @@
+1. Create project folder
+Open CMD and enter:
+cd %USERPROFILE%\Downloads\dockerpractice
+
+
+2. Code 1: index.html
+Run notepad index.html and paste:
+
+<html>
+<head>
+    <title>ShopEasy</title>
+</head>
+<body>
+    <h1>Welcome to ShopEasy</h1>
+    <p>Your online shopping store!</p>
+    <a href="products.html">View Products</a>
+</body>
+</html>
+
+
+
+3. Code 2: products.html
+Run notepad products.html and paste:
+
+<html>
+<head>
+    <title>Products</title>
+</head>
+<body>
+    <h1>Our Products</h1>
+    <p>1. Laptop - Rs. 45000</p>
+    <p>2. Headphones - Rs. 1500</p>
+    <p>3. Keyboard - Rs. 800</p>
+    <a href="index.html">Back to Home</a>
+</body>
+</html>
+
+
+
+4. Code 3: Dockerfile
+Run notepad Dockerfile and paste:
+
+FROM nginx:alpine
+COPY index.html /usr/share/nginx/html/index.html
+COPY products.html /usr/share/nginx/html/products.html
+EXPOSE 80
+
+
+
+Save all three files in the dockerpractice folder.
+5. Run all Docker commands
+Enter these commands one by one in CMD:
+docker --version
+docker build -t ecommerce .
+docker run -d -p 8080:80 ecommerce
+docker ps
+start http://localhost:8080
+start http://localhost:8080/products.html
+docker images
